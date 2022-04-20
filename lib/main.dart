@@ -86,7 +86,7 @@ class Homepage extends StatelessWidget {
                         margin: EdgeInsets.symmetric(vertical: 10),
                         child: ListTile(
                           title: Text('www.amirolzolkifli.com'),
-                          leading: Icon(Icons.phone),
+                          leading: Icon(Icons.web),
                         ),
                       ),
                       onTap: followLink,

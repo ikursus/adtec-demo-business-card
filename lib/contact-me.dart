@@ -10,6 +10,25 @@ class PageContactMe extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Contact Me'),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'My Account',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.contact_phone),
+            label: 'Contact',
+          ),
+        ],
+        currentIndex: 0,
+        selectedItemColor: Colors.orange[900],
+        unselectedItemColor: Colors.black38,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
