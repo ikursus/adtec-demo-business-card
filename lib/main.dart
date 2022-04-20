@@ -35,14 +35,14 @@ class Homepage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  CircleAvatar(
+                children: [
+                  const CircleAvatar(
                     backgroundImage:
                         //NetworkImage('https://picsum.photos/500/500'),
                         AssetImage('assets/images/gambar-avatar.jpg'),
                     radius: 70.0,
                   ),
-                  Text(
+                  const Text(
                     'Amirol Zolkifli',
                     style: TextStyle(
                       fontSize: 30.0,
@@ -50,7 +50,7 @@ class Homepage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
+                  const Text(
                     'Web Developer',
                     style: TextStyle(
                       fontSize: 18.0,
@@ -58,14 +58,14 @@ class Homepage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 200.0,
                     height: 20.0,
                     child: Divider(
                       color: Colors.white,
                     ),
                   ),
-                  Card(
+                  const Card(
                     color: Colors.white,
                     margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
                     child: ListTile(
@@ -73,7 +73,7 @@ class Homepage extends StatelessWidget {
                       leading: Icon(Icons.phone),
                     ),
                   ),
-                  Card(
+                  const Card(
                     color: Colors.white,
                     margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
                     child: ListTile(
@@ -81,13 +81,53 @@ class Homepage extends StatelessWidget {
                       leading: Icon(Icons.add_alarm),
                     ),
                   ),
-                  Image(
-                    image: NetworkImage('https://picsum.photos/500/500'),
+                  ElevatedButton(
+                    child: const Text('About Me'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const PageAboutMe()),
+                      );
+                    },
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 30,
+                    ),
+                    child: Image(
+                      image: NetworkImage('https://picsum.photos/500/500'),
+                    ),
                   ),
                 ],
               ),
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class PageAboutMe extends StatelessWidget {
+  const PageAboutMe({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('About Me'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            // Navigate back to first route when tapped.
+            Navigator.pop(
+              context,
+              MaterialPageRoute(builder: (context) => const MyHome()),
+            );
+          },
+          child: const Text('Go back!'),
         ),
       ),
     );
