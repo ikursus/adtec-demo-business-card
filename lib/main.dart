@@ -32,13 +32,14 @@ class Homepage extends StatelessWidget {
           child: SizedBox(
             width: MediaQuery.of(context).size.width * 1,
             child: Padding(
-              padding: const EdgeInsets.all(5),
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   CircleAvatar(
                     backgroundImage:
-                        NetworkImage('https://picsum.photos/500/500'),
+                        //NetworkImage('https://picsum.photos/500/500'),
+                        AssetImage('assets/images/gambar-avatar.jpg'),
                     radius: 70.0,
                   ),
                   Text(
@@ -71,6 +72,17 @@ class Homepage extends StatelessWidget {
                       title: Text('014-6333569'),
                       leading: Icon(Icons.phone),
                     ),
+                  ),
+                  Card(
+                    color: Colors.white,
+                    margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                    child: ListTile(
+                      title: Text('www.amirolzolkifli.com'),
+                      leading: Icon(Icons.add_alarm),
+                    ),
+                  ),
+                  Image(
+                    image: NetworkImage('https://picsum.photos/500/500'),
                   ),
                 ],
               ),
