@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:business_card/about-me.dart';
+import 'package:business_card/contact-me.dart';
+import 'package:url_launcher/link.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(const MyHome());
@@ -67,29 +71,70 @@ class Homepage extends StatelessWidget {
                   ),
                   const Card(
                     color: Colors.white,
-                    margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                    margin: EdgeInsets.symmetric(vertical: 10),
                     child: ListTile(
                       title: Text('014-6333569'),
                       leading: Icon(Icons.phone),
                     ),
                   ),
-                  const Card(
-                    color: Colors.white,
-                    margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                    child: ListTile(
-                      title: Text('www.amirolzolkifli.com'),
-                      leading: Icon(Icons.add_alarm),
+                  Link(
+                    target: LinkTarget.blank,
+                    uri: Uri.parse('https://www.amirolzolkifli.com'),
+                    builder: (context, followLink) => GestureDetector(
+                      child: const Card(
+                        color: Colors.white,
+                        margin: EdgeInsets.symmetric(vertical: 10),
+                        child: ListTile(
+                          title: Text('www.amirolzolkifli.com'),
+                          leading: Icon(Icons.phone),
+                        ),
+                      ),
+                      onTap: followLink,
                     ),
                   ),
-                  ElevatedButton(
-                    child: const Text('About Me'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const PageAboutMe()),
-                      );
-                    },
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 5,
+                    ),
+                    child: ElevatedButton(
+                      child: const Text(
+                        'About Me',
+                        style: TextStyle(fontSize: 18.5),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.black,
+                        minimumSize: const Size.fromHeight(50),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const PageAboutMe()),
+                        );
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 5,
+                    ),
+                    child: ElevatedButton(
+                      child: const Text(
+                        'Contact Me',
+                        style: TextStyle(fontSize: 18.5),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blue[800],
+                        minimumSize: const Size.fromHeight(50),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const PageContactMe()),
+                        );
+                      },
+                    ),
                   ),
                   const Padding(
                     padding: EdgeInsets.symmetric(
@@ -103,31 +148,6 @@ class Homepage extends StatelessWidget {
               ),
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class PageAboutMe extends StatelessWidget {
-  const PageAboutMe({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('About Me'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Navigate back to first route when tapped.
-            Navigator.pop(
-              context,
-              MaterialPageRoute(builder: (context) => const MyHome()),
-            );
-          },
-          child: const Text('Go back!'),
         ),
       ),
     );
